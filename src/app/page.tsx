@@ -53,6 +53,11 @@ export default function Home() {
             View Booking History
           </button>
         </Link>
+        <Link href="/admin/dashboard">
+          <button className="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500 transition duration-200">
+            Approve Bookings
+          </button>
+        </Link>
       </div>
 
       <div className="w-full max-w-2xl text-center mb-12">
