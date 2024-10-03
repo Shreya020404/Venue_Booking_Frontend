@@ -40,42 +40,40 @@ export default function AdminDashboard() {
   };
 
   const handleApproval = async (id: number) => {
-    try {
-      const response = await axios.put<Booking>(
-        `http://localhost:8080/api/bookings/approve/${id}`
-      );
-      // Update the local state to reflect the change
-      console.log(response);
-      setBookings((prevBookings) =>
-        prevBookings.map((booking) =>
-          booking.id === id ? { ...booking, approved: true } : booking
-        )
-      );
-      setMessage(`Booking ${id} approved successfully.`);
-    } catch (error) {
-      setMessage("Error approving booking. Please try again.");
-      console.error("Approval error:", error);
-    }
-  };
+  try {
+    await axios.put<Booking>(
+      `http://localhost:8080/api/bookings/approve/${id}`
+    );
+    // Update the local state to reflect the change
+    setBookings((prevBookings) =>
+      prevBookings.map((booking) =>
+        booking.id === id ? { ...booking, approved: true } : booking
+      )
+    );
+    setMessage(`Booking ${id} approved successfully.`);
+  } catch (error) {
+    setMessage("Error approving booking. Please try again.");
+    console.error("Approval error:", error);
+  }
+};
 
-  const handleRejection = async (id: number) => {
-    try {
-      const response = await axios.put<Booking>(
-        `http://localhost:8080/api/bookings/reject/${id}`
-      );
-      // Update the local state to reflect the change
-      console.log(response);
-      setBookings((prevBookings) =>
-        prevBookings.map((booking) =>
-          booking.id === id ? { ...booking, approved: false } : booking
-        )
-      );
-      setMessage(`Booking ${id} rejected successfully.`);
-    } catch (error) {
-      setMessage("Error rejecting booking. Please try again.");
-      console.error("Rejection error:", error);
-    }
-  };
+const handleRejection = async (id: number) => {
+  try {
+    await axios.put<Booking>(
+      `http://localhost:8080/api/bookings/reject/${id}`
+    );
+    // Update the local state to reflect the change
+    setBookings((prevBookings) =>
+      prevBookings.map((booking) =>
+        booking.id === id ? { ...booking, approved: false } : booking
+      )
+    );
+    setMessage(`Booking ${id} rejected successfully.`);
+  } catch (error) {
+    setMessage("Error rejecting booking. Please try again.");
+    console.error("Rejection error:", error);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
