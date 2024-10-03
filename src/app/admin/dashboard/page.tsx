@@ -45,6 +45,7 @@ export default function AdminDashboard() {
         `http://localhost:8080/api/bookings/approve/${id}`
       );
       // Update the local state to reflect the change
+      console.log(response);
       setBookings((prevBookings) =>
         prevBookings.map((booking) =>
           booking.id === id ? { ...booking, approved: true } : booking
@@ -63,6 +64,7 @@ export default function AdminDashboard() {
         `http://localhost:8080/api/bookings/reject/${id}`
       );
       // Update the local state to reflect the change
+      console.log(response);
       setBookings((prevBookings) =>
         prevBookings.map((booking) =>
           booking.id === id ? { ...booking, approved: false } : booking
