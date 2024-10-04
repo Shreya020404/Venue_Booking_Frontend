@@ -54,9 +54,11 @@ const BookingForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-blue-600 mb-6">Book a Venue</h1>
-      <form onSubmit={handleBookingSubmit}>
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
+      <h1 className="text-3xl md:text-4xl font-bold text-blue-600 mb-6 text-center">
+        Book a Venue
+      </h1>
+      <form onSubmit={handleBookingSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Venue
@@ -70,6 +72,7 @@ const BookingForm: React.FC = () => {
               value={venueId}
               onChange={(e) => setVenueId(e.target.value)}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
             >
               <option value="">Select Venue</option>
               {venues.map((venue) => (
@@ -125,7 +128,7 @@ const BookingForm: React.FC = () => {
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             >
               Submit Booking
             </button>
@@ -133,7 +136,15 @@ const BookingForm: React.FC = () => {
         )}
       </form>
 
-      {message && <p className="mt-4 text-red-500">{message}</p>}
+      {message && (
+        <p
+          className={`mt-4 text-center ${
+            message.includes("failed") ? "text-red-500" : "text-green-500"
+          }`}
+        >
+          {message}
+        </p>
+      )}
     </div>
   );
 };
