@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl text-center mb-12">
         <h1 className="text-5xl font-bold text-blue-600 mb-4">
           Welcome to the College Venue Booking Portal
@@ -20,7 +20,7 @@ export default function Home() {
           alt="College Event"
           layout="fill" // Use fill layout for responsive behavior
           objectFit="cover" // Cover the entire area
-          className="rounded-lg shadow-lg mb-6"
+          className="rounded-lg shadow-lg"
         />
       </div>
 
@@ -37,24 +37,36 @@ export default function Home() {
         </ul>
       </div>
 
-      <div className="flex space-x-4 mb-8">
-        <Link href="/venues">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition duration-200">
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+        <Link href="/venues" passHref>
+          <button
+            aria-label="View Venues"
+            className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition duration-200"
+          >
             View Venues
           </button>
         </Link>
-        <Link href="/book">
-          <button className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-500 transition duration-200">
+        <Link href="/book" passHref>
+          <button
+            aria-label="Book a Venue"
+            className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-500 transition duration-200"
+          >
             Book a Venue
           </button>
         </Link>
-        <Link href="/bookings/history">
-          <button className="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500 transition duration-200">
+        <Link href="/bookings/history" passHref>
+          <button
+            aria-label="View Booking History"
+            className="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500 transition duration-200"
+          >
             View Booking History
           </button>
         </Link>
-        <Link href="/admin/dashboard">
-          <button className="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500 transition duration-200">
+        <Link href="/admin/dashboard" passHref>
+          <button
+            aria-label="Approve Bookings"
+            className="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500 transition duration-200"
+          >
             Approve Bookings
           </button>
         </Link>
@@ -70,7 +82,7 @@ export default function Home() {
         </p>
         <p className="text-gray-600 mb-4">
           &ldquo;The booking process was smooth, and the team was very helpful.
-          Will use again!&quot;
+          Will use again!&rdquo;
         </p>
       </div>
 
@@ -78,7 +90,7 @@ export default function Home() {
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Ready to get started?
         </h2>
-        <Link href="/book">
+        <Link href="/book" passHref>
           <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition duration-200">
             Start Booking Now
           </button>
